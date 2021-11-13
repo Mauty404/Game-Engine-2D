@@ -1,4 +1,5 @@
 #include "engine.hpp"
+#include "Primitives/PrimitiveRenderer.hpp"
 
 const sf::Time Engine::TimePerFrame = seconds(1.f/60.f);
 
@@ -13,6 +14,7 @@ Engine::Engine(unsigned int x, unsigned int y) {
 
 
 void Engine::run() {
+
     //Main loop - runs until the window is closed
     while (window.isOpen())
     {

@@ -10,8 +10,10 @@ public:
     void SetPoint(int, int);
     static sf::CircleShape DrawPoint(Point2d);
 
-private:
     int x, y;
+
+private:
+
 };
 
 #endif //LAB_POINT2D_H

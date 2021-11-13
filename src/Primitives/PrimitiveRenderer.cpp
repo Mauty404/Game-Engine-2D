@@ -1,4 +1,8 @@
 #include "PrimitiveRenderer.hpp"
+#include <cmath>
+#include <queue>
+#include <iostream>
+#include "../Point2d/Point2d.h"
 
 sf::VertexArray PrimitiveRenderer::DrawLineIncremental(int x0, int y0, int x1, int y1, sf::Color color) {
     sf::Vector2 startPoint(x0, y0);
@@ -56,3 +60,151 @@ sf::CircleShape PrimitiveRenderer::DrawTriangle(int x, int y, int radius, sf::Co
     triangle.setPosition(x, y);
     return triangle;
 }
+
+sf::VertexArray PrimitiveRenderer::DrawCircleAlg(int x0, int y0, int r, sf::Color color) {
+    float step;
+    int x, y;
+
+    queue<int> xList;
+    queue<int> yList;
+
+    step = (float)1.0/r;
+    float b = M_PI/2;
+
+    int i = 0;
+    for(float a=0; a < M_PI/2; a+=step) {
+        x = x0+r*cos(a)+0,5;
+        y = y0+r*sin(a)+0,5;
+
+        xList.push(x);
+        yList.push(y);
+        i++;
+    }
+
+    sf::VertexArray pointMap(sf::Points, 4*i);
+
+    int deltaX, deltaY;
+    for(int j=0; j<i; j++) {
+        deltaX = xList.front()-x0;
+        deltaY = yList.front()-y0;
+        pointMap[j].position = sf::Vector2f(xList.front(),yList.front());
+        pointMap[j].color = color;
+        pointMap[j+i].position = sf::Vector2f(xList.front(),yList.front()-2*deltaY);
+        pointMap[j+i].color = color;
+        pointMap[j+2*i].position = sf::Vector2f(xList.front()-2*deltaX,yList.front()-2*deltaY);
+        pointMap[j+2*i].color = color;
+        pointMap[j+3*i].position = sf::Vector2f(xList.front()-2*deltaX,yList.front());
+        pointMap[j+3*i].color = color;
+        xList.pop();
+        yList.pop();
+    }
+
+    return pointMap;
+}
+
+sf::VertexArray PrimitiveRenderer::DrawElipseAlg(int x0, int y0, int r1, int r2, sf::Color color) {
+
+    float step;
+    int x, y;
+
+    queue<int> xList;
+    queue<int> yList;
+
+    step = (float)1.0/r1;
+    float b = M_PI/2;
+
+    int i = 0;
+    for(float a=0; a < M_PI/2; a+=step) {
+        x = x0+r1*cos(a)+0,5;
+        y = y0+r2*sin(a)+0,5;
+
+        xList.push(x);
+        yList.push(y);
+        i++;
+    }
+
+    sf::VertexArray pointMap(sf::Points, 4*i);
+
+    int deltaX, deltaY;
+    for(int j=0; j<i; j++) {
+        deltaX = xList.front()-x0;
+        deltaY = yList.front()-y0;
+        pointMap[j].position = sf::Vector2f(xList.front(),yList.front());
+        pointMap[j].color = color;
+        pointMap[j+i].position = sf::Vector2f(xList.front(),yList.front()-2*deltaY);
+        pointMap[j+i].color = color;
+        pointMap[j+2*i].position = sf::Vector2f(xList.front()-2*deltaX,yList.front()-2*deltaY);
+        pointMap[j+2*i].color = color;
+        pointMap[j+3*i].position = sf::Vector2f(xList.front()-2*deltaX,yList.front());
+        pointMap[j+3*i].color = color;
+        xList.pop();
+        yList.pop();
+    }
+
+    return pointMap;
+}
+
+void PrimitiveRenderer::BoundaryFill(int x, int y, sf::Color boundaryColor, sf::Color fillColor, RenderWindow* window) {
+
+//    window->display();
+//    auto color = window->capture().getPixel(x,y);
+//    if (color != sf::Color::Black && color != fillColor) {
+//        sf::Vertex point(sf::Vector2f(x, y), fillColor);
+//        window->draw(&point, 1, sf::Points);
+//
+//        BoundaryFill(x+1, y, boundaryColor, fillColor, window);
+//        BoundaryFill(x, y+1, boundaryColor, fillColor, window);
+//        BoundaryFill(x-1, y, boundaryColor, fillColor, window);
+//        BoundaryFill(x, y-1, boundaryColor, fillColor, window);
+//    }
+
+    auto seedColor = window->capture().getPixel(x,y);
+    queue<Point2d> points;
+    points.push(Point2d(x,y));
+
+    while (!points.empty()) {
+        window->display();
+        Point2d point = points.front();
+        points.pop();
+
+        auto color = window->capture().getPixel(point.x, point.y);
+
+        if (color == fillColor) continue;
+
+        sf::Vertex toColor(sf::Vector2f(point.x, point.y), fillColor);
+        window->draw(&toColor, 1, sf::Points);
+
+        points.push(Point2d(point.x+1, point.y));
+        points.push(Point2d(point.x-1, point.y));
+        points.push(Point2d(point.x, point.y+1));
+        points.push(Point2d(point.x, point.y-1));
+    }
+
+
+//    const auto color = window->capture().getPixel(x,y);
+//    queue<Point2d> points;
+//    points.push(Point2d(x,y));
+//
+//    while (!points.empty()) {
+//
+//
+//        Point2d point2D(points.front());
+//        cout << point2D.x << "\n" ;
+//        points.pop();
+//
+//        if (color == boundaryColor || color == fillColor) continue;
+//
+//        sf::Vertex point(sf::Vector2f(point2D.x, point2D.y), fillColor);
+//        window->draw(&point, 1, sf::Points);
+//
+//        points.push(Point2d(point2D.x+1, point2D.y));
+//        points.push(Point2d(point2D.x-1, point2D.y));
+//        points.push(Point2d(point2D.x, point2D.y+1));
+//        points.push(Point2d(point2D.x, point2D.y-1));
+//
+//        window->display();
+//    }
+//
+//    return;
+}
+
