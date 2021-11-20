@@ -4,10 +4,12 @@
 #include "../Point2d/Point2d.h"
 
 class LineSegment{
+public:
+    LineSegment(Point2d, Point2d);
+    sf::VertexArray DrawLine();
+
 private:
     Point2d startLine, endLine;
-
-    void DrawLine(Point2d start, Point2d end);
 };
 
 #endif //LAB_LINESEGMENT_H

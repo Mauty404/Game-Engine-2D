@@ -1,13 +1,19 @@
 #include "Point2d.h"
 #include "../Primitives/PrimitiveRenderer.hpp"
 
+Point2d::Point2d() {}
+
 Point2d::Point2d(int x, int y) {
     this->x = x;
     this->y = y;
 }
 
-Point2d Point2d::GetPoint() {
+int Point2d::GetX() {
+    return x;
+}
 
+int Point2d::GetY() {
+    return y;
 }
 
 void Point2d::SetPoint(int x, int y) {

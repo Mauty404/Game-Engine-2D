@@ -5,8 +5,10 @@
 
 class Point2d{
 public:
+    Point2d();
     Point2d(int x, int y);
-    Point2d GetPoint();
+    int GetX();
+    int GetY();
     void SetPoint(int, int);
     static sf::CircleShape DrawPoint(Point2d);
 
