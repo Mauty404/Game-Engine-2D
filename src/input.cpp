@@ -2,6 +2,8 @@
 
 void Engine::input() {
     Event event;
+    bool isClicked = false;
+    window.setKeyRepeatEnabled(false);
 
     while (window.pollEvent(event))
     {
@@ -22,7 +24,17 @@ void Engine::input() {
             {
                 circleShape.setRadius(60);
             }
+
         }
+    }
+
+
+    if(Keyboard::isKeyPressed(Keyboard::T)) {
+        point1->RotateOrigin(0.01);
+    }
+
+    if(Keyboard::isKeyPressed(Keyboard::Y)) {
+        point2->RotatePoint(350, 350, 0.01);
     }
 
     if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left))

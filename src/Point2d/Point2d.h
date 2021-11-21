@@ -12,6 +12,10 @@ public:
     void SetPoint(int, int);
     static sf::CircleShape DrawPoint(Point2d);
 
+    void Translate(int x, int y);
+    void RotateOrigin(float alpha);
+    void RotatePoint(int x, int y, float alpha);
+
     int x, y;
 
 private:

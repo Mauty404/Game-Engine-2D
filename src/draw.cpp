@@ -11,8 +11,8 @@ void Engine::draw() {
     window.draw(PrimitiveRenderer::DrawRectangle(300,0,50,100,sf::Color::Green));
     window.draw(PrimitiveRenderer::DrawTriangle(400, 0, 50, sf::Color::Yellow));
 
-    LineSegment lineSegment(Point2d(450, 0), Point2d(500, 100));
-    window.draw(lineSegment.DrawLine());
+
+    window.draw(lineSegment->DrawLine());
 
     window.draw(PrimitiveRenderer::DrawCircleAlg(60, 150, 40, sf::Color::Yellow));
     window.draw(PrimitiveRenderer::DrawElipseAlg(200, 150, 70, 40, sf::Color::Yellow));
@@ -25,8 +25,8 @@ void Engine::draw() {
 
     //PrimitiveRenderer::BoundaryFill(60, 350,sf::Color::Magenta, sf::Color::Blue, &window);
 
-    Point2d point2D(30, 70);
-    window.draw(Point2d::DrawPoint(point2D));
+    window.draw(Point2d::DrawPoint(*point1));
+    window.draw(Point2d::DrawPoint(*point2));
 
     Engine::circleShape.setRadius(20);
     window.draw(circleShape);

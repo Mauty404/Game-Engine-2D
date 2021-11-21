@@ -3,6 +3,9 @@
 
 #include "SFML/Graphics.hpp"
 #include "SFML/Graphics/RectangleShape.hpp"
+#include "../src/Point2d/Point2d.h"
+#include "../src/LineSegment/LineSegment.h"
+
 
 using namespace sf;
 using namespace std;
@@ -24,6 +27,10 @@ public:
 
     // The main loop in run func
     void run();
+
+    Point2d *point1;
+    Point2d *point2;
+    LineSegment *lineSegment;
 };
 
 

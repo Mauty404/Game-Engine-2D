@@ -5,8 +5,11 @@
 
 class LineSegment{
 public:
+    LineSegment();
     LineSegment(Point2d, Point2d);
     sf::VertexArray DrawLine();
+    void Uniformity(float k);
+    void Uniformity(int x, int y, float k);
 
 private:
     Point2d startLine, endLine;
