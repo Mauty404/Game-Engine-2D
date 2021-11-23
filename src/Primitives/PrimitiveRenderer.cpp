@@ -5,6 +5,10 @@
 #include "../Point2d/Point2d.h"
 
 sf::VertexArray PrimitiveRenderer::DrawLineIncremental(int x0, int y0, int x1, int y1, sf::Color color) {
+
+    if(x0>x1) swap(x0, x1);
+    if(y0>y1) swap(y0, y1);
+
     sf::Vector2 startPoint(x0, y0);
     sf::Vector2 endPoint(x1, y1);
     float dy, dx, y, x, m;

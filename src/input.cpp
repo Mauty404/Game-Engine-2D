@@ -2,7 +2,6 @@
 
 void Engine::input() {
     Event event;
-    bool isClicked = false;
     window.setKeyRepeatEnabled(false);
 
     while (window.pollEvent(event))
@@ -30,11 +29,19 @@ void Engine::input() {
 
 
     if(Keyboard::isKeyPressed(Keyboard::T)) {
-        point1->RotateOrigin(0.01);
+        point1->Rotate(0.01);
     }
 
     if(Keyboard::isKeyPressed(Keyboard::Y)) {
-        point2->RotatePoint(350, 350, 0.01);
+        point2->Rotate(350, 350, 0.01);
+    }
+
+    if(Keyboard::isKeyPressed(Keyboard::U)) {
+        lineSegment->Rotate(0.01);
+    }
+
+    if(Keyboard::isKeyPressed(Keyboard::I)) {
+        lineSegment->Rotate(600, 600, 0.01);
     }
 
     if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left))

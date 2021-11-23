@@ -3,13 +3,18 @@
 
 #include "../Point2d/Point2d.h"
 
-class LineSegment{
+class LineSegment : public TransformableObject {
 public:
     LineSegment();
     LineSegment(Point2d, Point2d);
+
     sf::VertexArray DrawLine();
-    void Uniformity(float k);
-    void Uniformity(int x, int y, float k);
+
+    void Translate(int x, int y) override;
+    void Rotate(float alpha) override;
+    void Rotate(int x, int y, float alpha) override;
+    void Scale(float k) override;
+    void Scale(int x, int y, float k) override;
 
 private:
     Point2d startLine, endLine;

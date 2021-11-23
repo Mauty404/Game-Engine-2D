@@ -10,7 +10,6 @@ Engine::Engine(unsigned int x, unsigned int y) {
     float radius = circleShape.getRadius();
     circleShape.setFillColor(Color::Magenta);
     circleShape.setPosition((float(window.getSize().x)/2.f-radius),float(window.getSize().y)/2-radius);
-
 }
 
 
@@ -20,8 +19,8 @@ void Engine::run() {
     point1->Translate(100,100);
     this->point2 = new Point2d(300,300);
 
-    //lineSegment->Uniformity(0.1);
-    lineSegment->Uniformity(900,0,0.3);
+    //lineSegment->Scale(0.1);
+    lineSegment->Scale(900,0,0.3);
 
     //Main loop - runs until the window is closed
     while (window.isOpen())

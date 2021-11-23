@@ -13,7 +13,7 @@ using namespace std;
 
 class Engine {
 private:
-    //Window
+    //GameWindow
     RenderWindow window;
     Vector2f resolution;
     CircleShape circleShape;

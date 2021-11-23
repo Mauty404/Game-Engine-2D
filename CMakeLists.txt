@@ -3,7 +3,7 @@ project(Game-Engine-2D)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Game-Engine-2D src/main.cpp src/engine.cpp headers/engine.hpp src/draw.cpp src/input.cpp src/Primitives/PrimitiveRenderer.cpp src/Primitives/PrimitiveRenderer.hpp src/LineSegment/LineSegment.cpp src/LineSegment/LineSegment.h src/Point2d/Point2d.cpp src/Point2d/Point2d.h src/GameObject.cpp src/ShapeObject.cpp src/DrawableObject.cpp src/TransformableObject.cpp)
+add_executable(Game-Engine-2D src/main.cpp src/engine.cpp headers/engine.hpp src/draw.cpp src/input.cpp src/Primitives/PrimitiveRenderer.cpp src/Primitives/PrimitiveRenderer.hpp src/LineSegment/LineSegment.cpp src/LineSegment/LineSegment.h src/Point2d/Point2d.cpp src/Point2d/Point2d.h src/ShapeObject.h src/DrawableObject.h src/TransformableObject.h)
 
 include_directories(headers c:/SFML/include)
 

@@ -31,7 +31,7 @@ void Point2d::Translate(int x, int y) {
     this->y += y;
 }
 
-void Point2d::RotateOrigin(float alpha) {
+void Point2d::Rotate(float alpha) {
     float tmpX, tmpY;
     tmpX = x*cos(alpha)-y*sin(alpha);
     tmpY = x*sin(alpha)+y*cos(alpha);
@@ -40,16 +40,16 @@ void Point2d::RotateOrigin(float alpha) {
     this->y = tmpY;
 }
 
-void Point2d::RotatePoint(int xPoint, int yPoint, float alpha) {
+void Point2d::Rotate(int x, int y, float alpha) {
     float tmpX, tmpY;
 
-    tmpX = (float)xPoint+(float)(x-xPoint)*cos(alpha)-(float)(y-yPoint)*sin(alpha);
-    tmpY = (float)yPoint+(float)(x-xPoint)*sin(alpha)+(float)(y-yPoint)*cos(alpha);
-//    tmpX = (float)xPoint+(float)(x-xPoint)*cos(alpha)-(float)(y-yPoint)*sin(alpha);
-//    tmpY = (float)yPoint+(float)(x-xPoint)*sin(alpha)-(float)(y-yPoint)*cos(alpha);
+    tmpX = (float)x+(float)(this->x-x)*cos(alpha)-(float)(this->y-y)*sin(alpha);
+    tmpY = (float)y+(float)(this->x-x)*sin(alpha)+(float)(this->y-y)*cos(alpha);
 
     this->x = tmpX;
     this->y = tmpY;
 }
+
+
 
 
