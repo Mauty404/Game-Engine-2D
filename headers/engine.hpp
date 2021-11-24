@@ -22,6 +22,8 @@ private:
 
 public:
     Engine(unsigned int x, unsigned int y);
+    void instantiate();
+    void Window1Input();
     void input();
     void draw();
 

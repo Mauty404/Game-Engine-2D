@@ -2,6 +2,6 @@
 
 int main() {
     Engine engine(800, 600);
-    engine.run();
+    engine.instantiate();
     return 0;
 }
