@@ -9,19 +9,40 @@ Engine::Engine(unsigned int x, unsigned int y) {
 }
 
 void Engine::instantiate() {
-    window.create(VideoMode(600, 800), "BomberMan", Style::Default);
+    window.create(VideoMode(666, 95), "BomberMan", Style::Default);
     window.setFramerateLimit(FPS);
 
+    res1.loadFromFile("assets/res1.png");
+    res2.loadFromFile("assets/res2.png");
+    res3.loadFromFile("assets/res3.png");
+    res4.loadFromFile("assets/res4.png");
+
+    res1s.setTexture(res1);
+    res2s.setTexture(res2);
+    res3s.setTexture(res3);
+    res4s.setTexture(res4);
+
+    res1s.setPosition(2,2);
+    res2s.setPosition(168,2);
+    res3s.setPosition(334,2);
+    res4s.setPosition(500,2);
+
     while(window.isOpen()) {
+        window.draw(res1s);
+        window.draw(res2s);
+        window.draw(res3s);
+        window.draw(res4s);
+
         Window1Input();
+        window.display();
+        window.clear(sf::Color::Black);
     }
 
-    run();
 }
 
 
-void Engine::run() {
-    window.create(VideoMode(600, 800), "BomberMan", Style::Default);
+void Engine::run(int x, int y, Uint32 s) {
+    window.create(VideoMode(x, y), "BomberMan", s);
     window.setFramerateLimit(FPS);
     float radius = circleShape.getRadius();
     circleShape.setFillColor(Color::Magenta);
@@ -62,11 +83,26 @@ void Engine::Window1Input() {
             {
                 window.close();
             }
-            if(Keyboard::isKeyPressed(Keyboard::Enter))
-            {
-                circleShape.setRadius(60);
-            }
+        }
 
+        if (res1s.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) &&
+                sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            run(800, 600, sf::Style::Default);
+        }
+
+        if (res2s.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) &&
+                sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            run(1024, 768, sf::Style::Default);
+        }
+
+        if (res3s.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) &&
+                sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            run(1360, 768, sf::Style::Default);
+        }
+
+        if (res4s.getGlobalBounds().contains(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y) &&
+                sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            run(1920, 1080, sf::Style::Fullscreen);
         }
     }
 }

@@ -20,6 +20,16 @@ private:
     const unsigned int FPS = 60;
     static const Time TimePerFrame;
 
+    sf::Texture res1;
+    sf::Texture res2;
+    sf::Texture res3;
+    sf::Texture res4;
+
+    sf::Sprite res1s;
+    sf::Sprite res2s;
+    sf::Sprite res3s;
+    sf::Sprite res4s;
+
 public:
     Engine(unsigned int x, unsigned int y);
     void instantiate();
@@ -28,7 +38,7 @@ public:
     void draw();
 
     // The main loop in run func
-    void run();
+    void run(int x, int y, Uint32 s);
 
     Point2d *point1;
     Point2d *point2;
