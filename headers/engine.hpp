@@ -5,6 +5,7 @@
 #include "SFML/Graphics/RectangleShape.hpp"
 #include "../src/Point2d/Point2d.h"
 #include "../src/LineSegment/LineSegment.h"
+#include "../src/Player/Player.h"
 
 
 using namespace sf;
@@ -14,9 +15,9 @@ using namespace std;
 class Engine {
 private:
     //GameWindow
+    sf::Clock clock;
     RenderWindow window;
-    Vector2f resolution;
-    CircleShape circleShape;
+    Player* player;
     const unsigned int FPS = 60;
     static const Time TimePerFrame;
 

@@ -2,7 +2,6 @@
 #include <cmath>
 #include <queue>
 #include <iostream>
-#include "../Point2d/Point2d.h"
 
 sf::VertexArray PrimitiveRenderer::DrawLineIncremental(int x0, int y0, int x1, int y1, sf::Color color) {
 

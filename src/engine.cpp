@@ -1,6 +1,4 @@
 #include "engine.hpp"
-#include "LineSegment/LineSegment.h"
-#include "Primitives/PrimitiveRenderer.hpp"
 
 const sf::Time Engine::TimePerFrame = seconds(1.f/60.f);
 
@@ -44,9 +42,10 @@ void Engine::instantiate() {
 void Engine::run(int x, int y, Uint32 s) {
     window.create(VideoMode(x, y), "BomberMan", s);
     window.setFramerateLimit(FPS);
-    float radius = circleShape.getRadius();
-    circleShape.setFillColor(Color::Magenta);
-    circleShape.setPosition((float(window.getSize().x)/2.f-radius),float(window.getSize().y)/2-radius);
+
+    player = new Player();
+    player->x = window.getSize().x/2;
+    player->y = window.getSize().y/2;
 
     this->lineSegment = new LineSegment(Point2d(300,300), Point2d(400, 300));
     this->point1 = new Point2d(5,5);
