@@ -1,5 +1,6 @@
 #include "Player.h"
 
+///Player - konstruktor, ładuje z plików wygląd postaci i wycina sprite'y
 Player::Player() {
     sf::IntRect verticalSeed(0,29,64,35);
     sf::IntRect horizontalSeed(0,0,64,64);
@@ -24,27 +25,37 @@ Player::Player() {
     currentSprite = downS[0];
 }
 
+///MoveRight - Przesuń postać w prawo
+///@param delta O ile pikseli przesunąć postać
 void Player::MoveRight(int delta) {
     float time = clock.getElapsedTime().asSeconds();
     x += delta;
     currentSprite = rightS[SetFrame()];
 }
 
+///MoveLeft - Przesuń postać w lewo
+///@param delta O ile pikseli przesunąć postać
 void Player::MoveLeft(int delta) {
     x -= delta;
     currentSprite = leftS[SetFrame()];
 }
 
+///MoveUp - Przesuń postać w górę
+///@param delta O ile pikseli przesunąć postać
 void Player::MoveUp(int delta) {
     y -= delta;
     currentSprite = upS[SetFrame()];
 }
 
+///MoveDown - Przesuń postać w dół
+///@param delta O ile pikseli przesunąć postać
 void Player::MoveDown(int delta) {
     y += delta;
     currentSprite = downS[SetFrame()];
 }
 
+///SetFrame - Ustaw odpowiednią klatkę w zależności od czasu, który upłynął
+///@return nr klatki, która ma się wyświetlić
 int Player::SetFrame() {
     float time = clock.getElapsedTime().asSeconds();
 
