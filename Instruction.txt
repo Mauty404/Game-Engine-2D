@@ -1,0 +1,24 @@
+Q - draw all
+E - clear all
+
+R - change bitmap to red
+T - change bitmap to green
+Y - change bitmap to blue
+U - change bitmap to black
+
+I - draw primitives
+O - draw line incremental
+G - draw line by two points
+
+H - draw circle & elipse
+J - draw empty primitive
+K - boundary fill (crash program)
+L - flood fill (crash program)
+
+Z - draw line
+X - scale line (0,0)
+C - scale line (900, 0)
+V - rotate line (0,0)
+B - rotate line (600, 600)
+C - translate line
+
