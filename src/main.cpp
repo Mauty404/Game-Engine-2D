@@ -1,7 +1,7 @@
 #include "engine.hpp"
 
 int main() {
-    Engine engine(800, 600);
+    Engine engine;
     engine.instantiate();
     return 0;
 }

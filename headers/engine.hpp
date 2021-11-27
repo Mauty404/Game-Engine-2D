@@ -15,11 +15,11 @@ using namespace std;
 class Engine {
 private:
     //GameWindow
-    sf::Clock clock;
     RenderWindow window;
     Player* player;
     const unsigned int FPS = 60;
     static const Time TimePerFrame;
+    sf::Color backgroundColor;
 
     sf::Texture res1;
     sf::Texture res2;
@@ -31,8 +31,19 @@ private:
     sf::Sprite res3s;
     sf::Sprite res4s;
 
+    bool drawPrimitives = false;
+    bool drawLine = false;
+    bool drawPoint1 = false;
+    bool drawLinePoints = false;
+    bool drawCircle = false;
+    bool drawEmptyPrimitives = false;
+    bool borderFill = false;
+    bool drawLine2 = false;
+    bool scaleLine1 = true;
+    bool scaleLine2 = true;
+
 public:
-    Engine(unsigned int x, unsigned int y);
+    Engine();
     void instantiate();
     void Window1Input();
     void input();
@@ -44,6 +55,7 @@ public:
     Point2d *point1;
     Point2d *point2;
     LineSegment *lineSegment;
+    LineSegment *lineSegment2;
 };
 
 

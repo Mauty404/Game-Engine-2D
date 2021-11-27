@@ -2,9 +2,6 @@
 
 ///Player - konstruktor, ładuje z plików wygląd postaci i wycina sprite'y
 Player::Player() {
-    sf::IntRect verticalSeed(0,29,64,35);
-    sf::IntRect horizontalSeed(0,0,64,64);
-
     upT.loadFromFile("assets/player/walk_back.png");
     downT.loadFromFile("assets/player/walk_front.png");
     rightT.loadFromFile("assets/player/walk_right.png");
@@ -28,7 +25,7 @@ Player::Player() {
 ///MoveRight - Przesuń postać w prawo
 ///@param delta O ile pikseli przesunąć postać
 void Player::MoveRight(int delta) {
-    float time = clock.getElapsedTime().asSeconds();
+
     x += delta;
     currentSprite = rightS[SetFrame()];
 }

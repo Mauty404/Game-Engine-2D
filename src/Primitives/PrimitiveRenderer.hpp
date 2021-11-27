@@ -15,7 +15,7 @@ public:
     static sf::CircleShape DrawTriangle(int x, int y, int radius, sf::Color color);
     static sf::VertexArray DrawCircleAlg(int x0, int y0, int r, sf::Color color);
     static sf::VertexArray DrawElipseAlg(int x0, int y0, int r1, int r2, sf::Color color);
-    static void BoundaryFill(int x, int y, sf::Color boundaryColor, sf::Color fillColor, RenderWindow* window);
+    static void BorderFill(int x, int y, sf::Color boundaryColor, sf::Color fillColor, RenderWindow* window);
 };
 
 #endif //LAB_PRIMITIVERENDERER_HPP

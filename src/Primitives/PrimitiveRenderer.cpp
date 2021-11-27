@@ -169,41 +169,40 @@ sf::VertexArray PrimitiveRenderer::DrawElipseAlg(int x0, int y0, int r1, int r2,
     return pointMap;
 }
 
-void PrimitiveRenderer::BoundaryFill(int x, int y, sf::Color boundaryColor, sf::Color fillColor, RenderWindow* window) {
+void PrimitiveRenderer::BorderFill(int x, int y, sf::Color boundaryColor, sf::Color fillColor, RenderWindow* window) {
 
-    window->display();
-    auto color = window->capture().getPixel(x,y);
-    if (color != sf::Color::Black && color != fillColor) {
-        sf::Vertex point(sf::Vector2f(x, y), fillColor);
-        window->draw(&point, 1, sf::Points);
-
-        BoundaryFill(x+1, y, boundaryColor, fillColor, window);
-        BoundaryFill(x, y+1, boundaryColor, fillColor, window);
-        BoundaryFill(x-1, y, boundaryColor, fillColor, window);
-        BoundaryFill(x, y-1, boundaryColor, fillColor, window);
-    }
-
-//    auto seedColor = window->capture().getPixel(x,y);
-//    queue<Point2d> points;
-//    points.push(Point2d(x,y));
+//    auto color = window->capture().getPixel(x,y);
+//    if (color != sf::Color::Black && color != fillColor) {
+//        sf::Vertex point(sf::Vector2f(x, y), fillColor);
+//        window->draw(&point, 1, sf::Points);
 //
-//    while (!points.empty()) {
-//        window->display();
-//        Point2d point = points.front();
-//        points.pop();
-//
-//        auto color = window->capture().getPixel(point.x, point.y);
-//
-//        if (color == fillColor) continue;
-//
-//        sf::Vertex toColor(sf::Vector2f(point.x, point.y), fillColor);
-//        window->draw(&toColor, 1, sf::Points);
-//
-//        points.push(Point2d(point.x+1, point.y));
-//        points.push(Point2d(point.x-1, point.y));
-//        points.push(Point2d(point.x, point.y+1));
-//        points.push(Point2d(point.x, point.y-1));
+//        BoundaryFill(x+1, y, boundaryColor, fillColor, window);
+//        BoundaryFill(x, y+1, boundaryColor, fillColor, window);
+//        BoundaryFill(x-1, y, boundaryColor, fillColor, window);
+//        BoundaryFill(x, y-1, boundaryColor, fillColor, window);
 //    }
+
+    auto seedColor = window->capture().getPixel(x,y);
+    queue<Point2d> points;
+    points.push(Point2d(x,y));
+
+    while (!points.empty()) {
+        window->display();
+        Point2d point = points.front();
+        points.pop();
+
+        auto color = window->capture().getPixel(point.x, point.y);
+
+        if (color == fillColor) continue;
+
+        sf::Vertex toColor(sf::Vector2f(point.x, point.y), fillColor);
+        window->draw(&toColor, 1, sf::Points);
+
+        points.push(Point2d(point.x+1, point.y));
+        points.push(Point2d(point.x-1, point.y));
+        points.push(Point2d(point.x, point.y+1));
+        points.push(Point2d(point.x, point.y-1));
+    }
 
 
 //    const auto color = window->capture().getPixel(x,y);
