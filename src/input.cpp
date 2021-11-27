@@ -1,5 +1,6 @@
 #include "engine.hpp"
 
+/// input - obsługa klawiatury
 void Engine::input() {
     Event event;
     window.setKeyRepeatEnabled(false);

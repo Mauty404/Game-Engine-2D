@@ -3,6 +3,13 @@
 #include <queue>
 #include <iostream>
 
+/// DrawLineIncremental - rysowanie linii algorytmem inkrementacyjnym
+/// @param x0 współrzędna pozioma punktu początkowego
+/// @param y0 współrzędna pionowa punktu początkowego
+/// @param x1 współrzędna pozioma punktu końcowego
+/// @param y1 współrzędna pionowa punktu końcowego
+/// @param color kolor linii
+/// @return VertexArray, czyli tablica wierzchołków, w której zapisane są punkty linii do narysowania
 sf::VertexArray PrimitiveRenderer::DrawLineIncremental(int x0, int y0, int x1, int y1, sf::Color color) {
 
     if(x0>x1) swap(x0, x1);
@@ -56,6 +63,13 @@ sf::VertexArray PrimitiveRenderer::DrawLineIncremental(int x0, int y0, int x1, i
 
 }
 
+/// DrawLine - rysowanie linii metodą z biblioteki SFML
+/// @param x0 współrzędna pozioma punktu początkowego
+/// @param y0 współrzędna pionowa punktu początkowego
+/// @param x1 współrzędna pozioma punktu końcowego
+/// @param y1 współrzędna pionowa punktu końcowego
+/// @param color kolor linii
+/// @return Vertex* wskaźnik na tablicę Vertex, która zawiera punkty, do linii którą chcemy narysować
 sf::Vertex* PrimitiveRenderer::DrawLine(int x0, int y0, int x1, int y1, sf::Color color) {
     sf::Vertex* line = new sf::Vertex[2];
     line[0].position = sf::Vector2f(x0,y0);
@@ -65,6 +79,12 @@ sf::Vertex* PrimitiveRenderer::DrawLine(int x0, int y0, int x1, int y1, sf::Colo
     return line;
 }
 
+/// DrawCircle - rysowanie koła metodą z biblioteki SFML
+/// @param radius promień koła
+/// @param x współrzędna pozioma środka koła
+/// @param y współrzędna pionowa środka koła
+/// @param color kolor linii
+/// @return CircleShape, w którym zapisane są współrzędne punktu, który chcemy narysować oraz jego promień i kolor
 sf::CircleShape PrimitiveRenderer::DrawCircle(int radius, int x, int y, sf::Color color) {
     sf::CircleShape circle(radius);
     circle.setFillColor(color);
@@ -72,12 +92,20 @@ sf::CircleShape PrimitiveRenderer::DrawCircle(int radius, int x, int y, sf::Colo
     return circle;
 }
 
+/// DrawCircle - rysowanie prostokąta metodą z biblioteki SFML
+/// @param x współrzędna pozioma początku prostokąta (lewy górny róg)
+/// @param y współrzędna pionowa początku prostokąta (lewy górny róg)
+/// @param width szerokość prostokąta
+/// @param height wysokość prostokąta
+/// @param color kolor linii
+/// @return RectangleShape, w którym zapisane są współrzędne punktu, który chcemy narysować oraz jego kolor, wysokość i szerokość
 sf::RectangleShape PrimitiveRenderer::DrawRectangle(int x, int y, int width, int height, sf::Color color) {
     sf:RectangleShape rectangleShape(sf::Vector2f(width, height));
     rectangleShape.setFillColor(color);
     rectangleShape.setPosition(x, y);
     return rectangleShape;
 }
+
 
 sf::CircleShape PrimitiveRenderer::DrawTriangle(int x, int y, int radius, sf::Color color) {
     sf:CircleShape triangle(radius, 3);

@@ -4,16 +4,24 @@
 
 LineSegment::LineSegment() {}
 
+/// LineSegment - konstruktor, tworzy linię bazując na punkcie początkowym i końcowym
+/// @param start punkt startowy
+/// @param end punkt końcowy
 LineSegment::LineSegment(Point2d start, Point2d end) {
 
     startLine = Point2d(start.x, start.y);
     endLine = Point2d(end.x, end.y);
 }
 
+/// DrawLine - wywołuje funkcję DrawLineIncremental dodającą punkty linii, którą chcemy narysować, do VertexArray
+/// @return VertexArray, czyli tablica wierzchołków, w której zapisane są punkty linii do narysowania
 sf::VertexArray LineSegment::DrawLine() {
     return PrimitiveRenderer::DrawLineIncremental(startLine.x, startLine.y, endLine.x, endLine.y, sf::Color::Red);
 }
 
+/// Translate - przemieszcza linię o podaną liczbę pikseli
+/// @param x liczba pikseli do przesunięcia w poziomie
+/// @param y liczba pikseli do przesunięcia w pionie
 void LineSegment::Translate(int x, int y) {
     startLine.x += x;
     startLine.y += y;
@@ -21,6 +29,8 @@ void LineSegment::Translate(int x, int y) {
     endLine.y += y;
 }
 
+/// Rotate - obraca linię o dany kąt względem początku układu współrzędnych
+/// @param alpha kąt obrotu
 void LineSegment::Rotate(float alpha) {
     float tmpX, tmpY;
     tmpX = startLine.x*cos(alpha)-startLine.y*sin(alpha);
@@ -36,6 +46,10 @@ void LineSegment::Rotate(float alpha) {
     endLine.y = tmpY;
 }
 
+/// Rotate - obraca linię o dany kąt względem podanego punktu
+/// @param x pozycja pozioma punktu
+/// @param y pozycja pionowa punktu
+/// @param alpha kąt obrotu
 void LineSegment::Rotate(int x, int y, float alpha) {
     float tmpX, tmpY;
 
@@ -52,6 +66,8 @@ void LineSegment::Rotate(int x, int y, float alpha) {
     endLine.y = tmpY;
 }
 
+/// Scale - przeskalowanie linii o podaną wartość względem początku układu współrzędnych
+/// @param k wartość, o jaką należy przeskalować linię
 void LineSegment::Scale(float k) {
     startLine.x *= k;
     startLine.y *= k;
@@ -59,6 +75,10 @@ void LineSegment::Scale(float k) {
     endLine.y *= k;
 }
 
+/// Scale - przeskalowanie linii o podaną wartość względem podanego punktu
+/// @param x pozycja pozioma punktu
+/// @param y pozycja pionowa punktu
+/// @param k wartość, o jaką należy przeskalować linię
 void LineSegment::Scale(int x, int y, float k) {
     startLine.x = startLine.x*k+(1-k)*x;
     startLine.y = startLine.y*k+(1-k)*y;

@@ -1,6 +1,7 @@
 #include "engine.hpp"
 #include "Primitives/PrimitiveRenderer.hpp"
 
+/// Draw - metoda odpowiadająca za renderowanie obrazu. Jest wywoływana w pętli w klasie engine
 void Engine::draw() {
 
     if (drawPrimitives) {

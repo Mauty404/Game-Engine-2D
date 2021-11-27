@@ -2,10 +2,12 @@
 
 const sf::Time Engine::TimePerFrame = seconds(1.f / 60.f);
 
+/// Engine - konstruktor, ustawia tło na kolor czarny
 Engine::Engine() {
     backgroundColor = sf::Color::Black;
 }
 
+/// instantiate - otwiera okno wyboru rozdzielczości
 void Engine::instantiate() {
     window.create(VideoMode(666, 95), "BomberMan", Style::Default);
     window.setFramerateLimit(FPS);
@@ -38,7 +40,10 @@ void Engine::instantiate() {
 
 }
 
-
+/// run - otwiera właściwe okno, wybrane w poprzednim kroku i w pętli renderuje obrazy, dopuki okno nie zostanie zamknięte
+/// @param x szerokość okna
+/// @param y długość okna
+/// @param s pozwala wybrać czy aplikacja otworzy się w oknie czy na cały ekran
 void Engine::run(int x, int y, Uint32 s) {
     window.create(VideoMode(x, y), "BomberMan", s);
     window.setFramerateLimit(FPS);
@@ -59,6 +64,7 @@ void Engine::run(int x, int y, Uint32 s) {
     }
 }
 
+///Window1Input - obsługa wejścia myszy dla okna wyboru rozdzielczości
 void Engine::Window1Input() {
     Event event;
     window.setKeyRepeatEnabled(false);
