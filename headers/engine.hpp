@@ -41,6 +41,7 @@ private:
     bool drawLine2 = false;
     bool scaleLine1 = true;
     bool scaleLine2 = true;
+    bool translateLine = true;
 
 public:
     Engine();

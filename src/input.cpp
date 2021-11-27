@@ -86,23 +86,40 @@ void Engine::input() {
         scaleLine2 = false;
     }
 
+    if (Keyboard::isKeyPressed(Keyboard::V)) {
+        lineSegment2->Rotate(0.01);
+    }
+
+    if (Keyboard::isKeyPressed(Keyboard::B)) {
+        lineSegment2->Rotate(600, 600, 0.01);
+    }
+
+    if (Keyboard::isKeyPressed(Keyboard::N) && translateLine) {
+        lineSegment2->Translate(100, 100);
+        translateLine = false;
+    }
+
+    if (Keyboard::isKeyPressed(Keyboard::E)) {
+        drawPrimitives = false;
+        drawLine = false;
+        drawPoint1 = false;
+        drawLinePoints = false;
+        drawCircle = false;
+        drawEmptyPrimitives = false;
+        drawLine2 = false;
+    }
+
+    if (Keyboard::isKeyPressed(Keyboard::Q)) {
+        drawPrimitives = true;
+        drawLine = true;
+        drawPoint1 = true;
+        drawLinePoints = true;
+        drawCircle = true;
+        drawEmptyPrimitives = true;
+        drawLine2 = true;
+    }
 
 
-//    if (Keyboard::isKeyPressed(Keyboard::T)) {
-//        point1->Rotate(0.01);
-//    }
-//
-//    if (Keyboard::isKeyPressed(Keyboard::Y)) {
-//        point2->Rotate(350, 350, 0.01);
-//    }
-//
-//    if (Keyboard::isKeyPressed(Keyboard::U)) {
-//        lineSegment->Rotate(0.01);
-//    }
-//
-//    if (Keyboard::isKeyPressed(Keyboard::I)) {
-//        lineSegment->Rotate(600, 600, 0.01);
-//    }
 
     if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left)) {
         player->MoveLeft(delta);
