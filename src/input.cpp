@@ -67,8 +67,11 @@ void Engine::input() {
     }
 
     if (Keyboard::isKeyPressed(Keyboard::K) && drawEmptyPrimitives) {
-        if (borderFill) borderFill = false;
-        else borderFill = true;
+       borderFill = true;
+    }
+
+    if (Keyboard::isKeyPressed(Keyboard::L) && drawEmptyPrimitives) {
+        borderFill = true;
     }
 
     if (Keyboard::isKeyPressed(Keyboard::Z)) {

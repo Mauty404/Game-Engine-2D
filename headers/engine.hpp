@@ -38,6 +38,7 @@ private:
     bool drawCircle = false;
     bool drawEmptyPrimitives = false;
     bool borderFill = false;
+    bool floodFill = false;
     bool drawLine2 = false;
     bool scaleLine1 = true;
     bool scaleLine2 = true;

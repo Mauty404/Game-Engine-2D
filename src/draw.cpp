@@ -39,6 +39,10 @@ void Engine::draw() {
         PrimitiveRenderer::BorderFill(450, 150, sf::Color::Magenta, sf::Color::Blue, &window);
     }
 
+    if (floodFill) {
+        PrimitiveRenderer::FloodFill(450, 150, backgroundColor, sf::Color::Blue, &window);
+    }
+
     if (drawLine2) {
         window.draw(lineSegment2->DrawLine());
     }

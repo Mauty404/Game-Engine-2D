@@ -193,7 +193,7 @@ void PrimitiveRenderer::BorderFill(int x, int y, sf::Color boundaryColor, sf::Co
 
         auto color = window->capture().getPixel(point.x, point.y);
 
-        if (color == fillColor) continue;
+        if (color == fillColor || color == boundaryColor) continue;
 
         sf::Vertex toColor(sf::Vector2f(point.x, point.y), fillColor);
         window->draw(&toColor, 1, sf::Points);
@@ -230,5 +230,29 @@ void PrimitiveRenderer::BorderFill(int x, int y, sf::Color boundaryColor, sf::Co
 //    }
 //
 //    return;
+}
+
+void PrimitiveRenderer::FloodFill(int x, int y, sf::Color backgroundColor, sf::Color fillColor, RenderWindow *window) {
+    auto seedColor = window->capture().getPixel(x,y);
+    queue<Point2d> points;
+    points.push(Point2d(x,y));
+
+    while (!points.empty()) {
+        window->display();
+        Point2d point = points.front();
+        points.pop();
+
+        auto color = window->capture().getPixel(point.x, point.y);
+
+        if (color == fillColor || color != backgroundColor) continue;
+
+        sf::Vertex toColor(sf::Vector2f(point.x, point.y), fillColor);
+        window->draw(&toColor, 1, sf::Points);
+
+        points.push(Point2d(point.x+1, point.y));
+        points.push(Point2d(point.x-1, point.y));
+        points.push(Point2d(point.x, point.y+1));
+        points.push(Point2d(point.x, point.y-1));
+    }
 }
 
