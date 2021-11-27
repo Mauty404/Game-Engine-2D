@@ -49,6 +49,8 @@ void Engine::run(int x, int y, Uint32 s) {
     window.setFramerateLimit(FPS);
 
     player = new Player();
+    player->rb.height = 37;
+    player->rb.width = 27;
     player->x = window.getSize().x / 2;
     player->y = window.getSize().y / 2;
 

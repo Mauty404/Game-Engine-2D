@@ -10,6 +10,14 @@ public:
     int x;
     int y;
 
+    class RigidBody{
+    public:
+        int width;
+        int height;
+    };
+
+    RigidBody rb;
+
 private:
     sf::Texture upT;
     sf::Texture downT;

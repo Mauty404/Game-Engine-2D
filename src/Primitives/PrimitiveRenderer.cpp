@@ -106,7 +106,11 @@ sf::RectangleShape PrimitiveRenderer::DrawRectangle(int x, int y, int width, int
     return rectangleShape;
 }
 
-
+/// DrawTriangle - rysowanie trójkąta metodą z biblioteki SFML
+/// @param x współrzędna pozioma środka trójkąta
+/// @param y współrzędna pionowa środka trójkąta
+/// @param radius promień okręgu opisanego na trójkącie
+/// @param color kolor trójkąta
 sf::CircleShape PrimitiveRenderer::DrawTriangle(int x, int y, int radius, sf::Color color) {
     sf:CircleShape triangle(radius, 3);
     triangle.setFillColor(color);
@@ -114,6 +118,12 @@ sf::CircleShape PrimitiveRenderer::DrawTriangle(int x, int y, int radius, sf::Co
     return triangle;
 }
 
+/// DrawCircleAlr - rysowanie okręgu algorytmem czterokrotnej symetrii
+/// @param x0 współrzędna pozioma środka okręgu
+/// @param y0 współrzędna pionowa środka okręgu
+/// @param r promień okręgu
+/// @param color kolor okręgu
+/// @return VertexArray punktów z których składa się okrąg
 sf::VertexArray PrimitiveRenderer::DrawCircleAlg(int x0, int y0, int r, sf::Color color) {
     float step;
     int x, y;
@@ -155,6 +165,13 @@ sf::VertexArray PrimitiveRenderer::DrawCircleAlg(int x0, int y0, int r, sf::Colo
     return pointMap;
 }
 
+/// DrawElipseAlr - rysowanie elipsy algorytmem czterokrotnej symetrii
+/// @param x0 współrzędna pozioma środka elipsy
+/// @param y0 współrzędna pionowa środka elipsy
+/// @param r1 krótszy promień elipsy
+/// @param r2 dłuższy promień elipsy
+/// @param color kolor elipsy
+/// @return VertexArray punktów z których składa się elipsa
 sf::VertexArray PrimitiveRenderer::DrawElipseAlg(int x0, int y0, int r1, int r2, sf::Color color) {
 
     float step;
@@ -197,6 +214,12 @@ sf::VertexArray PrimitiveRenderer::DrawElipseAlg(int x0, int y0, int r1, int r2,
     return pointMap;
 }
 
+/// BorderFill - algorytm wypełniania primitywów border fill
+/// @param x współrzędna x ziarna
+/// @param y współrzędna y ziarna
+/// @param boundaryColor kolor obramowania primitywu
+/// @param fillColor kolor wypełnienia
+/// @param window okno programu
 void PrimitiveRenderer::BorderFill(int x, int y, sf::Color boundaryColor, sf::Color fillColor, RenderWindow* window) {
 
 //    auto color = window->capture().getPixel(x,y);
@@ -260,6 +283,13 @@ void PrimitiveRenderer::BorderFill(int x, int y, sf::Color boundaryColor, sf::Co
 //    return;
 }
 
+
+/// FloodFill - algorytm wypełniania primitywów flood fill
+/// @param x współrzędna x ziarna
+/// @param y współrzędna y ziarna
+/// @param backgroundColor kolor tła
+/// @param fillColor kolor wypełnienia
+/// @param window okno programu
 void PrimitiveRenderer::FloodFill(int x, int y, sf::Color backgroundColor, sf::Color fillColor, RenderWindow *window) {
     auto seedColor = window->capture().getPixel(x,y);
     queue<Point2d> points;

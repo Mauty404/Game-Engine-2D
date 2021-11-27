@@ -124,17 +124,25 @@ void Engine::input() {
     }
 
 
+    sf::Vector2u size = window.getSize();
+     width = size.x;
+     height = size.y;
+
 
     if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left)) {
-        player->MoveLeft(delta);
+        if (player->x > player->rb.width/2)
+            player->MoveLeft(delta);
     }
     else if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::Right)) {
-        player->MoveRight(delta);
+        if (player->x < width-player->rb.width*2)
+            player->MoveRight(delta);
     }
     else if (Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Up)) {
-        player->MoveUp(delta);
+        if (player->y > player->rb.height/2)
+            player->MoveUp(delta);
     }
     else if (Keyboard::isKeyPressed(Keyboard::S) || Keyboard::isKeyPressed(Keyboard::Down)) {
-        player->MoveDown(delta);
+        if (player->y < height-player->rb.height*2)
+            player->MoveDown(delta);
     }
 }

@@ -44,6 +44,9 @@ private:
     bool scaleLine2 = true;
     bool translateLine = true;
 
+    int width;
+    int height;
+
 public:
     Engine();
     void instantiate();
